@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/shopListFragment">
+
+    <fragment
+        android:id="@+id/shopListFragment"
+        android:name="com.thortigen.orgabuy.fragments.shoplist.ShopListFragment"
+        android:label="@string/fragment_label_shoplist"
+        tools:layout="@layout/fragment_shop_list" >
+        <action
+            android:id="@+id/action_shopListFragment_to_itemViewFragment"
+            app:destination="@id/itemViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="com.thortigen.orgabuy.fragments.catalog.CatalogFragment"
+        android:label="@string/fragment_label_catalog"
+        tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_catalogFragment_to_itemAddFragment"
+            app:destination="@id/itemAddFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/catalogFragment" />
+        <action
+            android:id="@+id/action_catalogFragment_to_itemEditFragment"
+            app:destination="@id/itemEditFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_catalogFragment_to_itemViewFragment"
+            app:destination="@id/itemViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.thortigen.orgabuy.fragments.cart.CartFragment"
+        android:label="@string/fragment_label_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/itemAddFragment"
+        android:name="com.thortigen.orgabuy.fragments.item.ItemAddFragment"
+        android:label="@string/fragment_label_item_add"
+        tools:layout="@layout/fragment_item_add" >
+        <action
+            android:id="@+id/action_itemAddFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemEditFragment"
+        android:name="com.thortigen.orgabuy.fragments.item.ItemEditFragment"
+        android:label="@string/fragment_label_item_edit"
+        tools:layout="@layout/fragment_item_edit" >
+        <action
+            android:id="@+id/action_itemEditFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemViewFragment"
+        android:name="com.thortigen.orgabuy.fragments.item.ItemViewFragment"
+        android:label="@string/fragment_label_item_view"
+        tools:layout="@layout/fragment_item_view" >
+        <action
+            android:id="@+id/action_itemViewFragment_to_itemEditFragment"
+            app:destination="@id/itemEditFragment" />
+    </fragment>
+</navigation>
