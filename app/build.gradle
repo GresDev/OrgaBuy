@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -33,8 +35,10 @@ android {
 
 dependencies {
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     var nav_version = "2.3.5"
+    var room_version = "2.3.0"
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Navigation Section ---------------------------------------------------------------------//
 
@@ -46,6 +50,16 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:2.4.0-alpha05"
 
     //End of Navigation Section --------------------------------------------------------------//
+
+
+
+    //Room Section ---------------------------------------------------------------------//
+
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+
+    //End of Room Section --------------------------------------------------------------//
 
 
 
