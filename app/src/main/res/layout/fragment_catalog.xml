@@ -12,6 +12,31 @@
         android:layout_height="match_parent"
         tools:context=".fragments.catalog.CatalogFragment">
 
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                app:navToAddItem="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_add_32"
+                app:tint="?attr/colorPrimary"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
         <ImageView
             android:id="@+id/iv_no_items"
             android:layout_width="wrap_content"

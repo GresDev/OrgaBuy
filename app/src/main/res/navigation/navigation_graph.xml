@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/shopListFragment"
         android:name="com.thortigen.orgabuy.fragments.shoplist.ShopListFragment"
-        android:label="@string/fragment_label_shoplist"
+        android:label="@string/fragment_title_shoplist"
         tools:layout="@layout/fragment_shop_list" >
         <action
             android:id="@+id/action_shopListFragment_to_itemViewFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/catalogFragment"
         android:name="com.thortigen.orgabuy.fragments.catalog.CatalogFragment"
-        android:label="@string/fragment_label_catalog"
+        android:label="@string/fragment_title_catalog"
         tools:layout="@layout/fragment_catalog" >
         <action
             android:id="@+id/action_catalogFragment_to_itemAddFragment"
@@ -41,12 +41,12 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.thortigen.orgabuy.fragments.cart.CartFragment"
-        android:label="@string/fragment_label_cart"
+        android:label="@string/fragment_title_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/itemAddFragment"
         android:name="com.thortigen.orgabuy.fragments.item.ItemAddFragment"
-        android:label="@string/fragment_label_item_add"
+        android:label="@string/fragment_title_item_add"
         tools:layout="@layout/fragment_item_add" >
         <action
             android:id="@+id/action_itemAddFragment_to_catalogFragment"
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/itemEditFragment"
         android:name="com.thortigen.orgabuy.fragments.item.ItemEditFragment"
-        android:label="@string/fragment_label_item_edit"
+        android:label="@string/fragment_title_item_edit"
         tools:layout="@layout/fragment_item_edit" >
         <action
             android:id="@+id/action_itemEditFragment_to_catalogFragment"
@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/itemViewFragment"
         android:name="com.thortigen.orgabuy.fragments.item.ItemViewFragment"
-        android:label="@string/fragment_label_item_view"
+        android:label="@string/fragment_title_item_view"
         tools:layout="@layout/fragment_item_view" >
         <action
             android:id="@+id/action_itemViewFragment_to_itemEditFragment"

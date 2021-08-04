@@ -7,12 +7,19 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.thortigen.orgabuy.data.dao.CartDao
+import com.thortigen.orgabuy.data.dao.CatalogDao
+import com.thortigen.orgabuy.data.dao.ShopListDao
 import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.data.models.CatalogItem
 import com.thortigen.orgabuy.data.models.ShopListItem
 
 @Database(entities = [CatalogItem::class, ShopListItem::class, CartItem::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
+
+    abstract fun catalogDao() : CatalogDao
+    abstract fun shopListDao(): ShopListDao
+    abstract fun cartDao(): CartDao
 
     companion object {
 

@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.item.ItemAddFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".fragments.item.ItemAddFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_item_name"
+            style="@style/CustomTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:focusedByDefault="false"
+            android:theme="@style/CustomTextInputLayout"
+            app:counterEnabled="true"
+            app:counterMaxLength="@integer/max_length_item_name"
+            app:endIconMode="clear_text"
+            app:helperText="@string/item_add_name_helper_text"
+            app:helperTextEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_et_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/item_add_hint_name"
+                android:maxLength="@integer/max_length_item_name"
+                android:maxLines="@integer/max_lines_item_name" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_item_description"
+            style="@style/CustomTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:focusedByDefault="false"
+            android:theme="@style/CustomTextInputLayout"
+            app:counterEnabled="true"
+            app:counterMaxLength="@integer/max_length_item_description"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ti_item_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_et_item_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/item_add_hint_description"
+                android:maxLength="@integer/max_length_item_description"
+                android:maxLines="@integer/max_lines_item_description" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
