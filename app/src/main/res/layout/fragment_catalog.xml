@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="mCatalogViewModel"
+            type="com.thortigen.orgabuy.viewmodels.CatalogViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +26,6 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton"
-                app:navToAddItem="@{true}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
@@ -31,8 +33,19 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/ic_add_32"
-                app:tint="?attr/colorPrimary"
-                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                app:navToAddItem="@{true}"
+                app:tint="?attr/colorPrimary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_catalog_items"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -41,6 +54,7 @@
             android:id="@+id/iv_no_items"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:catalogIsEmpty="@{mCatalogViewModel.isCatalogEmpty()}"
             android:src="@drawable/ic_list_is_empty"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +67,7 @@
             android:id="@+id/tv_no_items"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:catalogIsEmpty="@{mCatalogViewModel.isCatalogEmpty()}"
             android:paddingTop="8dp"
             android:text="@string/catalog_is_empty"
             android:textColor="?attr/colorOnBackground"

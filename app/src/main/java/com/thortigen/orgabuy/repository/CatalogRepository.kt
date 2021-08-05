@@ -6,6 +6,8 @@ import com.thortigen.orgabuy.data.models.CatalogItem
 
 class CatalogRepository(private val catalogDao: CatalogDao) {
 
+    val getAllItems : LiveData<List<CatalogItem>> = catalogDao.getAllItems()
+
     suspend fun insertItem(catalogItem: CatalogItem) {
         catalogDao.insertItem(catalogItem)
     }
@@ -13,5 +15,7 @@ class CatalogRepository(private val catalogDao: CatalogDao) {
     fun getItemByName(name: String): CatalogItem {
         return catalogDao.getItemByName(name)
     }
+
+
 
 }
