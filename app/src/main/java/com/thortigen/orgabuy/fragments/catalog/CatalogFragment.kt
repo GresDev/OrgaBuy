@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.thortigen.orgabuy.databinding.FragmentCatalogBinding
-import com.thortigen.orgabuy.fragments.catalog.recyclerView.CatalogAdapter
+import com.thortigen.orgabuy.fragments.catalog.recyclerview.CatalogAdapter
 import com.thortigen.orgabuy.viewmodels.CatalogViewModel
 
 class CatalogFragment : Fragment() {

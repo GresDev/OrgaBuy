@@ -1,4 +1,4 @@
-package com.thortigen.orgabuy.fragments.catalog.recyclerView
+package com.thortigen.orgabuy.fragments.catalog.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

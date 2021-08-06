@@ -1,4 +1,4 @@
-package com.thortigen.orgabuy.fragments.catalog.recyclerView
+package com.thortigen.orgabuy.fragments.catalog.recyclerview
 
 import androidx.recyclerview.widget.DiffUtil
 import com.thortigen.orgabuy.data.models.CatalogItem

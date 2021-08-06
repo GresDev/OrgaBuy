@@ -24,3 +24,11 @@ fun catalogIsEmpty(view: View, itemListIsEmpty: MutableLiveData<Boolean>) {
         false -> view.visibility = View.INVISIBLE
     }
 }
+
+@BindingAdapter("android:shopListIsEmpty")
+fun shopListIsEmpty(view: View, shopListIsEmpty: MutableLiveData<Boolean>) {
+    when (shopListIsEmpty.value) {
+        true -> view.visibility = View.VISIBLE
+        false -> view.visibility = View.INVISIBLE
+    }
+}
