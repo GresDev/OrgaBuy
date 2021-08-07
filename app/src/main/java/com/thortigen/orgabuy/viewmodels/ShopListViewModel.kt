@@ -16,8 +16,8 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
     val isShopListEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
     val getAllItems : LiveData<List<ShopListItem>> = shopListRepository.getAllItems
 
-    fun checkForShopListIsEmpty(itemList: List<ShopListItem>) {
-        isShopListEmpty.value = itemList.isEmpty()
+    fun checkForShopListIsEmpty(shopListItemsList: List<ShopListItem>) {
+        isShopListEmpty.value = shopListItemsList.isEmpty()
     }
 
 }
