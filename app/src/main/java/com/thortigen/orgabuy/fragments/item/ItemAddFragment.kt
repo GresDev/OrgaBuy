@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.data.models.CatalogItem
 import com.thortigen.orgabuy.databinding.FragmentItemAddBinding
+import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.ItemAddViewModel
 import java.util.*
 
@@ -43,6 +44,7 @@ class ItemAddFragment : Fragment() {
         if (item.itemId == R.id.menu_add_item) {
             insertCatalogItemToDatabase()
         }
+        view?.hideKeyboard()
         return super.onOptionsItemSelected(item)
     }
 
