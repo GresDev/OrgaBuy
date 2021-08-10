@@ -12,4 +12,12 @@ class ShopListRepository(private val shopListDao: ShopListDao) {
         shopListDao.insertItem(shopListItem)
     }
 
+    suspend fun deleteItem(shopListItem: ShopListItem) {
+        shopListDao.deleteItem(shopListItem)
+    }
+
+    fun checkForItemIsInList(itemId: Int): ShopListItem{
+        return shopListDao.checkForItemIsInList(itemId)
+    }
+
 }

@@ -42,6 +42,36 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageButton
+                    android:id="@+id/rv_btn_item_add_to_shop_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/bg_add_item_to_shoplist"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_add_item_to_shoplist"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_item_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rv_item_background"
+                    app:rippleColor="#DCDCDC" />
+
+
+                <ImageButton
+                    android:id="@+id/rv_btn_item_remove_from_shop_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/bg_remove_item_from_shoplist"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_remove_item_from_shoplist"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_item_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rv_item_background"
+                    app:rippleColor="#DCDCDC" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

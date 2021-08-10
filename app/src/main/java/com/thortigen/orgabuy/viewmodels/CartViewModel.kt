@@ -4,9 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.thortigen.orgabuy.data.AppDatabase
 import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.repository.CartRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CartViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -18,6 +21,9 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     fun checkForCartIsEmpty(cartItemsList: List<CartItem>) {
         isCartEmpty.value = cartItemsList.isEmpty()
+    }
+    fun deleteItem(cartItem: CartItem) {
+        viewModelScope.launch(Dispatchers.IO) { cartRepository.deleteItem(cartItem) }
     }
 
 }
