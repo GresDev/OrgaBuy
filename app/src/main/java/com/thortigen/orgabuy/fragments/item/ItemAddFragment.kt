@@ -27,7 +27,7 @@ class ItemAddFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentItemAddBinding.inflate(inflater, container, false)
 
@@ -37,7 +37,7 @@ class ItemAddFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.add_item_top_menu, menu)
+        inflater.inflate(R.menu.menu_item_add, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

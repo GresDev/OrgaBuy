@@ -6,16 +6,18 @@ import com.thortigen.orgabuy.data.models.CatalogItem
 
 class CatalogRepository(private val catalogDao: CatalogDao) {
 
-    val getAllItems : LiveData<List<CatalogItem>> = catalogDao.getAllItems()
+    val getAllItems: LiveData<List<CatalogItem>> = catalogDao.getAllItems()
 
     suspend fun insertItem(catalogItem: CatalogItem) {
         catalogDao.insertItem(catalogItem)
     }
 
-    fun getItemByName(name: String): CatalogItem {
+    fun getItemByName(name: String): CatalogItem? {
         return catalogDao.getItemByName(name)
     }
 
-
+    fun searchDatabase(query: String): LiveData<List<CatalogItem>> {
+        return catalogDao.searchDatabase(query)
+    }
 
 }

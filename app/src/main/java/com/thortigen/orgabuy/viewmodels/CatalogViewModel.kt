@@ -20,4 +20,8 @@ class CatalogViewModel(application: Application) : AndroidViewModel(application)
         isCatalogEmpty.value = itemList.isEmpty()
     }
 
+    fun searchDatabase(query: String) : LiveData<List<CatalogItem>> {
+        return catalogRepository.searchDatabase(query)
+    }
+
 }

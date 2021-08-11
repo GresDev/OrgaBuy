@@ -20,7 +20,7 @@ class ItemAddViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun getItemByName(name: String) : CatalogItem{
+    fun getItemByName(name: String) : CatalogItem?{
         return catalogRepository.getItemByName(name)
     }
 
