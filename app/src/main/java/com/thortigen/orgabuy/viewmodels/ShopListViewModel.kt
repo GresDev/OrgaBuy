@@ -31,6 +31,12 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch(Dispatchers.IO) { shopListRepository.deleteItem(shopListItem) }
     }
 
+    fun editItem(shopListItem: ShopListItem ){
+        viewModelScope.launch(Dispatchers.IO) {
+            shopListRepository.editItem(shopListItem)
+        }
+    }
+
     fun checkForItemIsInList(itemId: Int): Boolean {
         if (shopListRepository.checkForItemIsInList(itemId) != null) {
             return true

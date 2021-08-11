@@ -36,6 +36,8 @@ class CartFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mCartViewModel = mCartViewModel
 
+        setupRecyclerView()
+
         mCartViewModel.getAllItems.observe(
             viewLifecycleOwner,
             {data -> mCartViewModel.checkForCartIsEmpty(data)

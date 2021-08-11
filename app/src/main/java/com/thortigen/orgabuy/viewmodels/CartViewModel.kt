@@ -22,6 +22,11 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     fun checkForCartIsEmpty(cartItemsList: List<CartItem>) {
         isCartEmpty.value = cartItemsList.isEmpty()
     }
+
+    fun insertItem(cartItem: CartItem) {
+        viewModelScope.launch(Dispatchers.IO) { (cartRepository.insertItem(cartItem)) }
+    }
+
     fun deleteItem(cartItem: CartItem) {
         viewModelScope.launch(Dispatchers.IO) { cartRepository.deleteItem(cartItem) }
     }
