@@ -73,5 +73,8 @@
         <action
             android:id="@+id/action_itemViewFragment_to_itemEditFragment"
             app:destination="@id/itemEditFragment" />
+        <argument
+            android:name="currentItem"
+            app:argType="com.thortigen.orgabuy.data.models.CatalogItem" />
     </fragment>
 </navigation>

@@ -5,9 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.thortigen.orgabuy.R
+import androidx.navigation.fragment.navArgs
+import com.thortigen.orgabuy.databinding.FragmentItemViewBinding
 
 class ItemViewFragment : Fragment() {
+
+    private var _binding : FragmentItemViewBinding? = null
+    private val binding get() = _binding!!
+
+    val itemViewArgs by navArgs<ItemViewFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +24,10 @@ class ItemViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_view, container, false)
+        _binding = FragmentItemViewBinding.inflate(inflater, container, false)
+        binding.itemViewArgs = itemViewArgs
+
+        return binding.root
     }
 
 }

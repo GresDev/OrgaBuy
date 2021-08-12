@@ -14,7 +14,7 @@ interface CatalogDao {
     fun getItemById(itemId: Int): CatalogItem
 
     @Query("SELECT * FROM catalog_table WHERE name LIKE :itemName")
-    fun getItemByName(itemName: String): CatalogItem
+    fun getItemByName(itemName: String): CatalogItem?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(item: CatalogItem)

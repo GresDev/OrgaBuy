@@ -15,5 +15,6 @@
     <string name="item_add_hint_description">Добавьте комментарий (необязательно)</string>
     <string name="item_add_name_helper_text">*Обязательно для заполнения</string>
     <string name="menu_save">Сохранить</string>
+    <string name="menu_catalog_search">Найти</string>
 
 </resources>

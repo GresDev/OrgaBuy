@@ -1,7 +1,6 @@
 package com.thortigen.orgabuy.data.models
 
 import android.os.Parcelable
-import androidx.navigation.compose.navArgument
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
