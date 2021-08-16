@@ -16,4 +16,8 @@ class CartRepository(private val cartDao: CartDao) {
         cartDao.deleteItem(cartItem)
     }
 
+    suspend fun deleteAllItems() {
+        cartDao.deleteAllItems()
+    }
+
 }

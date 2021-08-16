@@ -13,4 +13,9 @@
         <item name="hintTextColor">?attr/colorAccent</item>
     </style>
 
+    <style name="AlertDialogBox" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorOnPrimary">?attr/colorOnPrimary</item>
+        <item name="dialogCornerRadius">@dimen/cornerRadius</item>
+    </style>
+
 </resources>

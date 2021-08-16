@@ -24,4 +24,11 @@ class ShopListRepository(private val shopListDao: ShopListDao) {
         return shopListDao.checkForItemIsInList(itemId)
     }
 
+    suspend fun removeAllItemsFromCart() {
+        for (item in shopListDao.getAllItemsIsInCart()){
+            item.isInCart = 0
+            editItem(item)
+        }
+    }
+
 }

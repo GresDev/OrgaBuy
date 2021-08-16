@@ -31,4 +31,10 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) { cartRepository.deleteItem(cartItem) }
     }
 
+    fun deleteAllItems() {
+        viewModelScope.launch(Dispatchers.IO) {
+            cartRepository.deleteAllItems()
+        }
+    }
+
 }

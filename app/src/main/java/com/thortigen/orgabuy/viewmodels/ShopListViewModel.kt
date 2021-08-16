@@ -44,4 +44,10 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
         return false
     }
 
+    fun cleanUpCartList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            shopListRepository.removeAllItemsFromCart()
+        }
+    }
+
 }
