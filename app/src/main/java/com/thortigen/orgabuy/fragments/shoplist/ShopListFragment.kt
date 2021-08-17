@@ -28,7 +28,7 @@ class ShopListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentShopListBinding.inflate(inflater, container, false)
 
@@ -41,7 +41,7 @@ class ShopListFragment : Fragment() {
             viewLifecycleOwner,
             {
                 data -> mShoplistViewModel.checkForShopListIsEmpty(data)
-                shopListAdapter.setData(data)
+                shopListAdapter.setData(data.sortedBy { it.name }.sortedBy { it.isInCart })
             }
         )
 
