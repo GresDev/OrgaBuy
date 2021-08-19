@@ -1,8 +1,11 @@
 package com.thortigen.orgabuy.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.thortigen.orgabuy.data.dao.ShopListDao
 import com.thortigen.orgabuy.data.models.ShopListItem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ShopListRepository(private val shopListDao: ShopListDao) {
 
@@ -29,6 +32,10 @@ class ShopListRepository(private val shopListDao: ShopListDao) {
             item.isInCart = 0
             editItem(item)
         }
+    }
+
+    suspend fun deleteAllItems() {
+        shopListDao.deleteAllItems()
     }
 
 }

@@ -50,4 +50,10 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun deleteAllItems() {
+        viewModelScope.launch(Dispatchers.IO) {
+            shopListRepository.deleteAllItems()
+        }
+    }
+
 }
