@@ -17,5 +17,6 @@
     <string name="menu_save">Сохранить</string>
     <string name="menu_catalog_search">Найти</string>
     <string name="menu_shoplist_cleanup">Очистить список</string>
+    <string name="menu_edit">Редактировать</string>
 
 </resources>
