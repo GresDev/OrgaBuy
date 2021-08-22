@@ -37,7 +37,7 @@ class ItemAddFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_item_add, menu)
+        inflater.inflate(R.menu.menu_item_add_actionbar, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

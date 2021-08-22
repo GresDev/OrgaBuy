@@ -64,6 +64,9 @@
             app:destination="@id/catalogFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left" />
+        <argument
+            android:name="currentItem"
+            app:argType="com.thortigen.orgabuy.data.models.CatalogItem" />
     </fragment>
     <fragment
         android:id="@+id/itemViewFragment"

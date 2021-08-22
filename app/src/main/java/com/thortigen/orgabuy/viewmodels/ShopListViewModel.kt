@@ -56,4 +56,11 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun getItemById(itemId: Int): ShopListItem {
+
+        return shopListRepository.getItemById(itemId)
+    }
+
+
+
 }

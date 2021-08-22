@@ -37,4 +37,10 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun editItem(cartItem: CartItem) {
+        viewModelScope.launch(Dispatchers.IO){
+            cartDao.editItem(cartItem)
+        }
+    }
+
 }

@@ -20,4 +20,8 @@ class CatalogRepository(private val catalogDao: CatalogDao) {
         return catalogDao.searchDatabase(query)
     }
 
+    suspend fun editItem(item: CatalogItem) {
+        catalogDao.updateItem(item)
+    }
+
 }

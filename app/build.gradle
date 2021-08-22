@@ -44,6 +44,8 @@ dependencies {
     var nav_version = "2.3.5"
     var room_version = "2.3.0"
 
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
 
     //Navigation Section
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -61,7 +63,7 @@ dependencies {
 
 
     //Data Binding Section
-    kapt "androidx.databinding:databinding-common:7.1.0-alpha06"
+    kapt "androidx.databinding:databinding-common:7.1.0-alpha08"
     kapt "com.android.databinding:compiler:3.2.0-alpha10"
     //End of Data Binding Section
 

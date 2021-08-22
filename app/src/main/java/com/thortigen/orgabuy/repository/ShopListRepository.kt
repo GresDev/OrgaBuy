@@ -38,4 +38,8 @@ class ShopListRepository(private val shopListDao: ShopListDao) {
         shopListDao.deleteAllItems()
     }
 
+    fun getItemById(itemId: Int) : ShopListItem{
+        return shopListDao.getItemById(itemId)
+    }
+
 }
