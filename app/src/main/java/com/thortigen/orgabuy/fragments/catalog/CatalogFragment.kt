@@ -5,7 +5,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.databinding.FragmentCatalogBinding
 import com.thortigen.orgabuy.fragments.catalog.recyclerview.CatalogAdapter
@@ -20,6 +22,8 @@ class CatalogFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private val catalogAdapter: CatalogAdapter by lazy { CatalogAdapter() }
 
+    private var searchString: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -33,6 +37,15 @@ class CatalogFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding.lifecycleOwner = this
         binding.mCatalogViewModel = mCatalogViewModel
+
+        val floatingActionButton =
+            binding.root.findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        floatingActionButton?.setOnClickListener {
+            val action =
+                CatalogFragmentDirections.actionCatalogFragmentToItemAddFragment(searchString)
+            Navigation.findNavController(binding.root).navigate(action)
+        }
 
         setupRecyclerView()
 
@@ -75,6 +88,9 @@ class CatalogFragment : Fragment(), SearchView.OnQueryTextListener {
         if (query !== null) {
             searchInDatabase(query)
         }
+
+        searchString = query.toString()
+
         return true
     }
 

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.data.models.CatalogItem
 import com.thortigen.orgabuy.databinding.FragmentItemAddBinding
@@ -20,6 +21,8 @@ class ItemAddFragment : Fragment() {
 
     private val mItemAddViewModel: ItemAddViewModel by viewModels()
 
+    private val args by navArgs<ItemAddFragmentArgs>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,6 +33,8 @@ class ItemAddFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentItemAddBinding.inflate(inflater, container, false)
+
+        binding.searchString = args.searchString
 
         setHasOptionsMenu(true)
 

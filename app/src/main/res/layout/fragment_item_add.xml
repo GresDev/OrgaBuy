@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="searchString"
+    type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,6 +36,7 @@
                 android:id="@+id/ti_et_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@{searchString}"
                 android:hint="@string/item_add_hint_name"
                 android:maxLength="@integer/max_length_item_name"
                 android:maxLines="@integer/max_lines_item_name" />
