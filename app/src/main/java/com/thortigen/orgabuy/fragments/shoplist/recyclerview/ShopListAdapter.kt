@@ -20,7 +20,7 @@ import com.thortigen.orgabuy.viewmodels.ShopListViewModel
 
 class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemViewHolder>() {
 
-    private var shopListItemList = emptyList<ShopListItem>()
+    var shopListItemList = emptyList<ShopListItem>()
 
     private val mCartViewModel = CartViewModel(application = Application())
     private val mShopListViewModel = ShopListViewModel(application = Application())

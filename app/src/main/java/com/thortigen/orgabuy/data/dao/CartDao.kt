@@ -25,4 +25,7 @@ interface CartDao {
     @Update
     suspend fun editItem(cartItem: CartItem)
 
+    @Query("DELETE FROM cart_table WHERE id LIKE :id")
+    suspend fun deleteItemById(id: Int)
+
 }

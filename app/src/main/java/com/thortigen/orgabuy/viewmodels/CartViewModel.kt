@@ -38,8 +38,14 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun editItem(cartItem: CartItem) {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             cartDao.editItem(cartItem)
+        }
+    }
+
+    fun deleteItemById(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            cartDao.deleteItemById(id)
         }
     }
 
