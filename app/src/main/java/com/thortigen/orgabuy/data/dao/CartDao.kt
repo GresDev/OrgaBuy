@@ -10,6 +10,9 @@ interface CartDao {
     @Query("SELECT * FROM cart_table")
     fun getAllItems(): LiveData<List<CartItem>>
 
+    @Query("SELECT * FROM cart_table WHERE id LIKE :id")
+    fun getItemById(id: Int): CartItem
+
     @Query("SELECT COUNT(*) FROM cart_table")
     fun getItemsNum(): LiveData<Int>
 
@@ -26,6 +29,6 @@ interface CartDao {
     suspend fun editItem(cartItem: CartItem)
 
     @Query("DELETE FROM cart_table WHERE id LIKE :id")
-    suspend fun deleteItemById(id: Int)
+    fun deleteItemById(id: Int)
 
 }

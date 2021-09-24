@@ -8,8 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.data.models.CartItem
+import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.databinding.FragmentShopListBinding
 import com.thortigen.orgabuy.fragments.shoplist.recyclerview.ShopListAdapter
 import com.thortigen.orgabuy.utils.SwipeToDelete
@@ -90,16 +93,42 @@ class ShopListFragment : Fragment() {
     private fun swipeToDelete(recyclerView: RecyclerView) {
         val swipeToDeleteCallBack = object : SwipeToDelete(ItemTouchHelper.LEFT) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val itemToDelete =
+                val shopListItemToDelete =
                     shopListAdapter.shopListItemList[viewHolder.absoluteAdapterPosition]
                 shopListAdapter.notifyItemRemoved(viewHolder.absoluteAdapterPosition)
-                mShopListViewModel.deleteItem(itemToDelete)
-                mCartViewModel.deleteItemById(itemToDelete.id)
+                mShopListViewModel.deleteItem(shopListItemToDelete)
+                val cartItemToDelete = mCartViewModel.getItemById(shopListItemToDelete.id)
+                mCartViewModel.deleteItemById(shopListItemToDelete.id)
+                restoreDeletedItem(
+                    viewHolder.itemView,
+                    shopListItemToDelete,
+                    cartItemToDelete,
+                    viewHolder.absoluteAdapterPosition
+                )
             }
         }
 
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallBack)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    private fun restoreDeletedItem(
+        view: View,
+        shopListDeletedItem: ShopListItem,
+        cartDeletedItem: CartItem,
+        position: Int
+    ) {
+        val snackbar =
+            Snackbar.make(view, "Запись удалена", Snackbar.LENGTH_SHORT)
+        snackbar.setAction("Отменить") {
+            mShopListViewModel.insertItem(shopListDeletedItem)
+            mCartViewModel.insertItem(cartDeletedItem)
+            shopListAdapter.notifyItemChanged(position)
+        }
+        snackbar.setBackgroundTint(resources.getColor(R.color.colorSecondary))
+        snackbar.animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+        snackbar.show()
+
     }
 
     override fun onDestroyView() {

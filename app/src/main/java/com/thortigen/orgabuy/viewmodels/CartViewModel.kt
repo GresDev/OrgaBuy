@@ -39,14 +39,19 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     fun editItem(cartItem: CartItem) {
         viewModelScope.launch(Dispatchers.IO) {
-            cartDao.editItem(cartItem)
+            cartRepository.editItem(cartItem)
         }
     }
 
     fun deleteItemById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            cartDao.deleteItemById(id)
+            cartRepository.deleteItemById(id)
         }
     }
+
+    fun getItemById(id: Int): CartItem {
+        return cartRepository.getItemById(id)
+    }
+
 
 }
