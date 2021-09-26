@@ -15,9 +15,9 @@ class ItemAddViewModel(application: Application) : AndroidViewModel(application)
     private val catalogRepository: CatalogRepository = CatalogRepository(catalogDao)
 
     fun insertItem(catalogItem: CatalogItem) {
-        viewModelScope.launch(Dispatchers.IO) {
+
             catalogRepository.insertItem(catalogItem)
-        }
+
     }
 
     fun getItemByName(name: String) : CatalogItem?{

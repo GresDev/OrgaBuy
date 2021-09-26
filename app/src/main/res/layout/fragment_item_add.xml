@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="searchString"
-    type="String" />
+
+        <variable
+            name="searchString"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +29,7 @@
             app:endIconMode="clear_text"
             app:helperText="@string/item_add_name_helper_text"
             app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -36,12 +38,26 @@
                 android:id="@+id/ti_et_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{searchString}"
                 android:hint="@string/item_add_hint_name"
                 android:maxLength="@integer/max_length_item_name"
-                android:maxLines="@integer/max_lines_item_name" />
+                android:maxLines="@integer/max_lines_item_name"
+                android:text="@{searchString}" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sw_auto_add_new_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ti_item_name"
+            android:layout_marginVertical="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:text="Добавить в список"
+            android:textSize="16sp"
+            android:checked="true"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_item_description"
@@ -57,7 +73,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ti_item_name">
+            app:layout_constraintTop_toBottomOf="@id/sw_auto_add_new_item">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ti_et_item_description"

@@ -17,7 +17,7 @@ interface CatalogDao {
     fun getItemByName(itemName: String): CatalogItem?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertItem(item: CatalogItem)
+    fun insertItem(item: CatalogItem) //при использовании suspend возникает ошибка при одновременном добавлении записи в каталог и в список покупок - исправить
 
     @Update
     suspend fun updateItem(item: CatalogItem)

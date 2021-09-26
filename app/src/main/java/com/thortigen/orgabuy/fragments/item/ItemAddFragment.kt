@@ -9,9 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.data.models.CatalogItem
+import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.databinding.FragmentItemAddBinding
 import com.thortigen.orgabuy.utils.hideKeyboard
+import com.thortigen.orgabuy.viewmodels.CatalogViewModel
 import com.thortigen.orgabuy.viewmodels.ItemAddViewModel
+import com.thortigen.orgabuy.viewmodels.ShopListViewModel
+import kotlinx.coroutines.delay
 import java.util.*
 
 class ItemAddFragment : Fragment() {
@@ -21,7 +25,12 @@ class ItemAddFragment : Fragment() {
 
     private val mItemAddViewModel: ItemAddViewModel by viewModels()
 
+    private val mShopListViewModel: ShopListViewModel by viewModels()
+
+    private val mCatalogViewModel: CatalogViewModel by viewModels()
+
     private val args by navArgs<ItemAddFragmentArgs>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +63,7 @@ class ItemAddFragment : Fragment() {
     }
 
     private fun insertCatalogItemToDatabase() {
+
         val mName = binding.tiEtItemName.text.toString().replaceFirstChar {
             if (it.isLowerCase()) it.titlecase(
                 Locale.getDefault()
@@ -73,6 +83,7 @@ class ItemAddFragment : Fragment() {
                 mDescription
             )
             addNewItem(newCatalogItem, R.id.action_itemAddFragment_to_catalogFragment)
+
         } else {
             showToast("Поле \"Наименование\" не заполнено!")
         }
@@ -82,8 +93,24 @@ class ItemAddFragment : Fragment() {
 
         if (mItemAddViewModel.getItemByName(newCatalogItem.name) == null) {
             mItemAddViewModel.insertItem(newCatalogItem)
+
+            val addedItem = mCatalogViewModel.getItemByName(newCatalogItem.name)
+
+            if (binding.swAutoAddNewItem.isChecked && addedItem != null) {
+
+                mShopListViewModel.insertItem(
+                    ShopListItem(
+                        addedItem.id,
+                        addedItem.name,
+                        addedItem.description,
+                        0
+                    )
+                )
+
+            }
             showToast("Новая запись добавлена")
             findNavController().navigate(action)
+
         } else {
             showToast("Такая запись уже есть")
         }

@@ -31,7 +31,7 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch(Dispatchers.IO) { shopListRepository.deleteItem(shopListItem) }
     }
 
-    fun editItem(shopListItem: ShopListItem ){
+    fun editItem(shopListItem: ShopListItem) {
         viewModelScope.launch(Dispatchers.IO) {
             shopListRepository.editItem(shopListItem)
         }
@@ -60,7 +60,6 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
 
         return shopListRepository.getItemById(itemId)
     }
-
 
 
 }
