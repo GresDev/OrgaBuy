@@ -13,17 +13,17 @@ import kotlinx.coroutines.launch
 
 class CatalogViewModel(application: Application) : AndroidViewModel(application) {
     private val catalogDao = AppDatabase.getDatabase(application).catalogDao()
-    private val catalogRepository : CatalogRepository = CatalogRepository(catalogDao)
+    private val catalogRepository: CatalogRepository = CatalogRepository(catalogDao)
 
-    val isCatalogEmpty : MutableLiveData<Boolean> = MutableLiveData(false)
+    val isCatalogEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
 
-    val getAllItems : LiveData<List<CatalogItem>> = catalogRepository.getAllItems
+    val getAllItems: LiveData<List<CatalogItem>> = catalogRepository.getAllItems
 
     fun checkForCatalogIsEmpty(itemList: List<CatalogItem>) {
         isCatalogEmpty.value = itemList.isEmpty()
     }
 
-    fun searchDatabase(query: String) : LiveData<List<CatalogItem>> {
+    fun searchDatabase(query: String): LiveData<List<CatalogItem>> {
         return catalogRepository.searchDatabase(query)
     }
 
@@ -31,10 +31,17 @@ class CatalogViewModel(application: Application) : AndroidViewModel(application)
         return catalogRepository.getItemByName(itemName)
     }
 
-    fun editItem(item:CatalogItem) {
+    fun editItem(item: CatalogItem) {
         viewModelScope.launch(Dispatchers.IO) {
             catalogRepository.editItem(item)
         }
+    }
+
+    fun deleteItem(catalogItem: CatalogItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            catalogRepository.deleteItem(catalogItem)
+        }
+
     }
 
 

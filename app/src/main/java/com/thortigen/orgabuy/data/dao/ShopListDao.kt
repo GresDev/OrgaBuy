@@ -22,6 +22,9 @@ interface ShopListDao {
     @Delete
     suspend fun deleteItem(shopListItem: ShopListItem)
 
+    @Query("DELETE FROM shoplist_table WHERE id == :id")
+    suspend fun deleteItemById(id: Int)
+
     @Query("DELETE FROM shoplist_table")
     suspend fun deleteAllItems()
 

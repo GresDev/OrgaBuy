@@ -24,4 +24,9 @@ class CatalogRepository(private val catalogDao: CatalogDao) {
         catalogDao.updateItem(item)
     }
 
+    suspend fun deleteItem(catalogItem: CatalogItem) {
+        catalogDao.deleteItem(catalogItem)
+    }
+
+
 }

@@ -19,6 +19,10 @@ class ShopListRepository(private val shopListDao: ShopListDao) {
         shopListDao.deleteItem(shopListItem)
     }
 
+    suspend fun deleteItemById(id: Int) {
+        shopListDao.deleteItemById(id)
+    }
+
     suspend fun editItem(shopListItem: ShopListItem) {
         shopListDao.editItem(shopListItem)
     }

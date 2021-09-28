@@ -18,5 +18,6 @@
     <string name="menu_catalog_search">Найти</string>
     <string name="menu_shoplist_cleanup">Очистить список</string>
     <string name="menu_edit">Редактировать</string>
+    <string name="menu_delete">Удалить</string>
 
 </resources>

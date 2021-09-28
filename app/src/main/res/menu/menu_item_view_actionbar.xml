@@ -6,5 +6,12 @@
         android:icon="@drawable/ic_edit"
         app:iconTint="?attr/colorOnPrimary"
         android:title="@string/menu_edit"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/menu_item_view_delete"
+        android:icon="@drawable/ic_delete"
+        app:iconTint="?attr/colorOnPrimary"
+        android:title="@string/menu_delete"
+        app:showAsAction="collapseActionView"
+        />
 </menu>
