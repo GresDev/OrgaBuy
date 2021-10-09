@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="cartItem"
             type="com.thortigen.orgabuy.data.models.CartItem" />
@@ -27,7 +28,8 @@
                 android:id="@+id/rv_item_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="start|center_vertical">
+                android:layout_gravity="start|center_vertical"
+                android:sendItemToPriceFragment="@{cartItem}">
 
                 <TextView
                     android:id="@+id/rv_tv_item_name"
@@ -38,23 +40,60 @@
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{cartItem.name}"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="@dimen/text_size_on_lists"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ll_item_cost"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/ll_item_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/rv_ib_remove_from_cart"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/rv_tv_item_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(cartItem.price)}"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/rv_tv_item_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(cartItem.quantity)}"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/rv_tv_item_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(cartItem.price*cartItem.quantity)}"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/rv_ib_remove_from_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/bg_remove_item_from_cart"
-                    android:padding="8dp"
-                    android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_remove_item_from_cart"
-                    app:tint="?attr/colorOnPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorOnPrimary" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

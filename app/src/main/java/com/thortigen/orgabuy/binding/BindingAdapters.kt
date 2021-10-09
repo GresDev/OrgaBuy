@@ -7,7 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.thortigen.orgabuy.R
+import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.data.models.CatalogItem
+import com.thortigen.orgabuy.fragments.cart.CartFragmentDirections
 import com.thortigen.orgabuy.fragments.catalog.CatalogFragmentDirections
 
 @BindingAdapter("app:navToAddItem")
@@ -44,9 +46,18 @@ fun cartListIsEmpty(view: View, cartIsEmpty: MutableLiveData<Boolean>) {
 }
 
 @BindingAdapter("android:sendItemToViewFragment")
-fun sendItemToViewFragment(constraintLayout: ConstraintLayout, currentItem: CatalogItem ){
+fun sendItemToViewFragment(constraintLayout: ConstraintLayout, currentItem: CatalogItem) {
     constraintLayout.setOnClickListener {
         val action = CatalogFragmentDirections.actionCatalogFragmentToItemViewFragment(currentItem)
+        constraintLayout.findNavController().navigate(action)
+    }
+}
+
+@BindingAdapter("android:sendItemToPriceFragment")
+fun sendItemToPriceFragment(constraintLayout: ConstraintLayout, currentItem: CartItem) {
+    constraintLayout.setOnClickListener {
+        val action =
+            CartFragmentDirections.actionCartFragmentToSetItemPriceFragment(currentItem)
         constraintLayout.findNavController().navigate(action)
     }
 }

@@ -42,7 +42,11 @@
         android:id="@+id/cartFragment"
         android:name="com.thortigen.orgabuy.fragments.cart.CartFragment"
         android:label="@string/fragment_title_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_setItemPriceFragment"
+            app:destination="@id/setItemPriceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemAddFragment"
         android:name="com.thortigen.orgabuy.fragments.item.ItemAddFragment"
@@ -84,4 +88,15 @@
             android:name="currentItem"
             app:argType="com.thortigen.orgabuy.data.models.CatalogItem" />
     </fragment>
+    <dialog
+        android:id="@+id/setItemPriceFragment"
+        android:name="com.thortigen.orgabuy.fragments.cart.dialog.SetItemPriceFragment"
+        android:label="SetItemPriceFragment" >
+        <argument
+            android:name="currentItem"
+            app:argType="com.thortigen.orgabuy.data.models.CartItem" />
+        <action
+            android:id="@+id/action_setItemPriceFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </dialog>
 </navigation>

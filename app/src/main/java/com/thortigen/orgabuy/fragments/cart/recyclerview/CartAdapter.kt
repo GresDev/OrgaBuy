@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.thortigen.orgabuy.binding.cartListIsEmpty
 import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.databinding.FragmentCartRvItemBinding
@@ -49,7 +50,12 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ItemViewHolder>() {
 
         holder.imageButton.setOnClickListener {
             mCartViewModel.deleteItem(currentCartItem)
-            val shopListItem = ShopListItem(currentCartItem.id, currentCartItem.name, currentCartItem.description, 0)
+            val shopListItem = ShopListItem(
+                currentCartItem.id,
+                currentCartItem.name,
+                currentCartItem.description,
+                0
+            )
             mShopListViewModel.editItem(shopListItem)
         }
 

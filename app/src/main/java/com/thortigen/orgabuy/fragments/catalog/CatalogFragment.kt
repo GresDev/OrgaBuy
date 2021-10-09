@@ -11,6 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.databinding.FragmentCatalogBinding
 import com.thortigen.orgabuy.fragments.catalog.recyclerview.CatalogAdapter
+import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.CatalogViewModel
 
 class CatalogFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -37,6 +38,7 @@ class CatalogFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding.lifecycleOwner = this
         binding.mCatalogViewModel = mCatalogViewModel
+
 
         val floatingActionButton =
             binding.root.findViewById<FloatingActionButton>(R.id.floatingActionButton)

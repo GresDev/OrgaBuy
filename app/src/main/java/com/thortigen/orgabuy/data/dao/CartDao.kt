@@ -31,4 +31,7 @@ interface CartDao {
     @Query("DELETE FROM cart_table WHERE id LIKE :id")
     fun deleteItemById(id: Int)
 
+    @Query("SELECT TOTAL(price*quantity) FROM (SELECT price, quantity FROM cart_table) ")
+    fun getTotalCartCost() : LiveData<Double>
+
 }

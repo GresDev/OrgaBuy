@@ -7,6 +7,7 @@ import com.thortigen.orgabuy.data.models.CartItem
 class CartRepository(private val cartDao: CartDao) {
 
     val getAllItems: LiveData<List<CartItem>> = cartDao.getAllItems()
+    val getTotalCartCost: LiveData<Double> = cartDao.getTotalCartCost()
 
     suspend fun insertItem(cartItem: CartItem) {
         cartDao.insertItem(cartItem)

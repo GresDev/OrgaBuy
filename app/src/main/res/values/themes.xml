@@ -17,5 +17,6 @@
         <item name="colorControlActivated">?attr/colorOnPrimary</item>
         <item name="colorOnBackground">#936D6D6D</item>
         <item name="colorAccent">#006BFF</item>
+
     </style>
 </resources>

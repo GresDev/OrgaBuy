@@ -18,6 +18,7 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     val isCartEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
     val getAllItems: LiveData<List<CartItem>> = cartRepository.getAllItems
+    val getTotalCartCost: LiveData<Double> = cartRepository.getTotalCartCost
 
     fun checkForCartIsEmpty(cartItemsList: List<CartItem>) {
         isCartEmpty.value = cartItemsList.isEmpty()
@@ -52,6 +53,4 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     fun getItemById(id: Int): CartItem {
         return cartRepository.getItemById(id)
     }
-
-
 }

@@ -33,13 +33,17 @@
                     android:id="@+id/rv_tv_item_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{shopListItem.name}"
+                    android:textSize="@dimen/text_size_on_lists"
+                    android:textColor="@color/mainTextColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/rv_ib_add_to_cart"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
@@ -48,7 +52,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/bg_add_item_to_cart"
-                    android:padding="8dp"
                     android:src="@drawable/ic_add_item_to_cart"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"

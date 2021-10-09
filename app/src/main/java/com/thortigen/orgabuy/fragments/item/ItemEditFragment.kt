@@ -13,6 +13,7 @@ import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.data.models.CatalogItem
 import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.databinding.FragmentItemEditBinding
+import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.CartViewModel
 import com.thortigen.orgabuy.viewmodels.CatalogViewModel
 import com.thortigen.orgabuy.viewmodels.ShopListViewModel
@@ -85,6 +86,7 @@ class ItemEditFragment : Fragment() {
     private fun updateItem(updatedItem: CatalogItem, action: Int) {
 
         if (updatedItem.name == args.currentItem.name && args.currentItem.description == updatedItem.description) {
+            binding.root.hideKeyboard()
             findNavController().navigate(action)
             return
         }
@@ -115,6 +117,7 @@ class ItemEditFragment : Fragment() {
                 )
             }
             showToast("Запись обновлена")
+            binding.root.hideKeyboard()
             findNavController().navigate(action)
         } else {
             showToast("Такая запись уже есть")
