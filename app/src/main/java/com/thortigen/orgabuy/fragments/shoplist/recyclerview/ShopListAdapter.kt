@@ -1,13 +1,12 @@
 package com.thortigen.orgabuy.fragments.shoplist.recyclerview
 
 import android.app.Application
-import android.content.res.Resources
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.thortigen.orgabuy.R
@@ -29,6 +28,7 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         val addToCartButton: ImageButton = binding.rvIbAddToCart
+        val itemIsInCartButton: ImageButton = binding.rvIbIsInCart
         val textView: TextView = binding.rvTvItemName
 
         fun bind(shopListItem: ShopListItem) {
@@ -73,11 +73,18 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemViewHolder>() {
 
         if (currentShopListItem.isInCart == 1) {
             holder.addToCartButton.visibility = View.GONE
-            holder.textView.setTextColor(holder.itemView.getResources().getColorStateList(R.color.design_default_color_primary_variant))
+            holder.itemIsInCartButton.visibility = View.VISIBLE
+            holder.textView.setTextColor(
+                holder.itemView.getResources().getColorStateList(R.color.textInactiveColor)
+            )
+            holder.textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         } else {
+            holder.itemIsInCartButton.visibility = View.INVISIBLE
             holder.addToCartButton.visibility = View.VISIBLE
             holder.textView.setTextColor(
-                holder.itemView.getResources().getColorStateList(R.color.design_default_color_primary))
+                holder.itemView.getResources().getColorStateList(R.color.textMainColor)
+            )
+            holder.textView.paintFlags = 0
 
         }
 

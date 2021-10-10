@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="shopListItem"
             type="com.thortigen.orgabuy.data.models.ShopListItem" />
@@ -39,21 +40,33 @@
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{shopListItem.name}"
+                    android:textColor="@color/colorOnPrimary"
                     android:textSize="@dimen/text_size_on_lists"
-                    android:textColor="@color/mainTextColor"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/rv_ib_add_to_cart"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/rv_ib_add_to_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="8dp"
                     android:background="@drawable/bg_add_item_to_cart"
                     android:src="@drawable/ic_add_item_to_cart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/rv_ib_is_in_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/bg_item_is_in_cart"
+                    android:src="@drawable/ic_ok_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

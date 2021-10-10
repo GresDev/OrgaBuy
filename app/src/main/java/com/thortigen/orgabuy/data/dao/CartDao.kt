@@ -7,7 +7,7 @@ import com.thortigen.orgabuy.data.models.CartItem
 @Dao
 interface CartDao {
 
-    @Query("SELECT * FROM cart_table")
+    @Query("SELECT * FROM cart_table ORDER BY name")
     fun getAllItems(): LiveData<List<CartItem>>
 
     @Query("SELECT * FROM cart_table WHERE id LIKE :id")

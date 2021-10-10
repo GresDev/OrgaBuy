@@ -40,7 +40,7 @@
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{cartItem.name}"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/textMainColor"
                     android:textSize="@dimen/text_size_on_lists"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ll_item_cost"
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/rv_ib_remove_from_cart"
@@ -70,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{String.valueOf(cartItem.quantity)}"
-                        android:textSize="10sp" />
+                        android:textSize="11sp" />
 
                     <TextView
                         android:id="@+id/rv_tv_item_cost"
