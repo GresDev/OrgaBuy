@@ -70,6 +70,11 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemViewHolder>() {
             currentShopListItem.isInCart = 1
             mShopListViewModel.editItem(currentShopListItem)
         }
+        holder.itemIsInCartButton.setOnClickListener{
+            mCartViewModel.deleteItemById(currentShopListItem.id)
+            currentShopListItem.isInCart = 0
+            mShopListViewModel.editItem(currentShopListItem)
+        }
 
         if (currentShopListItem.isInCart == 1) {
             holder.addToCartButton.visibility = View.GONE
@@ -77,14 +82,17 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemViewHolder>() {
             holder.textView.setTextColor(
                 holder.itemView.getResources().getColorStateList(R.color.textInactiveColor)
             )
-            holder.textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
+            holder.textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG.or(Paint.ANTI_ALIAS_FLAG)
+
         } else {
             holder.itemIsInCartButton.visibility = View.INVISIBLE
             holder.addToCartButton.visibility = View.VISIBLE
             holder.textView.setTextColor(
                 holder.itemView.getResources().getColorStateList(R.color.textMainColor)
             )
-            holder.textView.paintFlags = 0
+
+            holder.textView.paintFlags = Paint.ANTI_ALIAS_FLAG
 
         }
 

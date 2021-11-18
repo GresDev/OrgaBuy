@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-<variable
-    name="catalogItem"
-    type="com.thortigen.orgabuy.data.models.CatalogItem" />
+
+        <variable
+            name="catalogItem"
+            type="com.thortigen.orgabuy.data.models.CatalogItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,21 +40,30 @@
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{catalogItem.name}"
-                    android:textSize="@dimen/text_size_on_lists"
                     android:textColor="@color/textMainColor"
+                    android:textSize="@dimen/text_size_on_lists_item_name"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/rv_btn_item_add_to_shop_list"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/rv_tv_item_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{catalogItem.description}"
+                    android:textSize="@dimen/text_size_on_lists_item_description"
+                    app:layout_constraintStart_toStartOf="@id/rv_tv_item_name"
+                    app:layout_constraintTop_toBottomOf="@id/rv_tv_item_name" />
 
                 <ImageButton
                     android:id="@+id/rv_btn_item_add_to_shop_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/bg_add_item_to_shoplist"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_add_item_to_shoplist"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="?attr/colorPrimary"
+
+                    android:src="@drawable/ic_checkbox_unchecked_32"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_item_background"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -65,10 +75,10 @@
                     android:id="@+id/rv_btn_item_remove_from_shop_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/bg_remove_item_from_shoplist"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_remove_item_from_shoplist"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="?attr/colorPrimary"
+
+                    android:src="@drawable/ic_checkbox_checked_32"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_item_background"
                     app:layout_constraintEnd_toEndOf="parent"

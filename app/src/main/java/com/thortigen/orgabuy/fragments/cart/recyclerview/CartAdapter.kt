@@ -27,6 +27,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ItemViewHolder>() {
 
         fun bind(cartItem: CartItem) {
             binding.cartItem = cartItem
+            binding.cartItemCost = String.format("%.2f", cartItem.price * cartItem.quantity)
             binding.executePendingBindings()
         }
 

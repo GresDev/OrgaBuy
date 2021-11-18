@@ -34,14 +34,13 @@
                     android:id="@+id/rv_tv_item_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginHorizontal="16dp"
                     android:ellipsize="end"
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{shopListItem.name}"
-                    android:textColor="@color/colorOnPrimary"
-                    android:textSize="@dimen/text_size_on_lists"
+                    android:textColor="@color/textMainColor"
+                    android:textSize="@dimen/text_size_on_lists_item_name"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/rv_ib_add_to_cart"
                     app:layout_constraintStart_toStartOf="parent"
@@ -51,25 +50,24 @@
                     android:id="@+id/rv_ib_add_to_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/bg_add_item_to_cart"
-                    android:src="@drawable/ic_add_item_to_cart"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:src="@drawable/ic_checkbox_unchecked_32"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/rv_ib_is_in_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/bg_item_is_in_cart"
-                    android:src="@drawable/ic_ok_24"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:src="@drawable/ic_checkbox_checked_32"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/textInactiveColor" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

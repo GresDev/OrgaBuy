@@ -115,14 +115,14 @@ class ShopListFragment : Fragment() {
     private fun restoreDeletedItem(
         view: View,
         shopListDeletedItem: ShopListItem,
-        cartDeletedItem: CartItem,
+        cartDeletedItem: CartItem?,
         position: Int
     ) {
         val snackbar =
-            Snackbar.make(view, "Запись удалена", Snackbar.LENGTH_SHORT)
+            Snackbar.make(binding.shoplistCoordinatorLayout, "Запись удалена", Snackbar.LENGTH_SHORT)
         snackbar.setAction("Отменить") {
             mShopListViewModel.insertItem(shopListDeletedItem)
-            mCartViewModel.insertItem(cartDeletedItem)
+            if (cartDeletedItem!=null ) mCartViewModel.insertItem(cartDeletedItem)
             shopListAdapter.notifyItemChanged(position)
         }
         snackbar.setBackgroundTint(resources.getColor(R.color.colorSecondary))

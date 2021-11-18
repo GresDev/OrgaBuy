@@ -4,25 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="mShopListViewModel"
-    type="com.thortigen.orgabuy.viewmodels.ShopListViewModel" />
+
+        <variable
+            name="mShopListViewModel"
+            type="com.thortigen.orgabuy.viewmodels.ShopListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorMainBackGround"
         tools:context=".fragments.shoplist.ShopListFragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_shoplist_items"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_no_items"
@@ -41,14 +33,39 @@
             android:id="@+id/tv_no_items"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shopListIsEmpty="@{mShopListViewModel.isShopListEmpty()}"
             android:paddingTop="8dp"
+            android:shopListIsEmpty="@{mShopListViewModel.isShopListEmpty()}"
             android:text="@string/shoplist_is_empty"
             android:textColor="?attr/colorOnBackground"
             android:textSize="@dimen/text_size_on_list_is_empty"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_no_items" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_shoplist_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <!-- Layout for SnackBar display-->
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/shoplist_coordinator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

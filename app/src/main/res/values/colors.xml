@@ -12,7 +12,10 @@
 
     <color name="colorPrimaryVariant">#484848</color>
     <color name="textMainColor">#000000</color>
-    <color name="textInactiveColor">#818080</color>
+    <color name="textInactiveColor">#A9A9A9</color>
+    <color name="textMainColorInverse">#ffffff</color>
     <color name="colorOnPrimary">#C6000000</color>
+    <color name="colorMainBackGround">#F2F1F1</color>
+    <color name="colorAccent">#006BFF</color>
 
 </resources>

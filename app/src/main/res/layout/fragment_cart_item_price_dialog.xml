@@ -12,50 +12,86 @@
         <variable
             name="currentItem"
             type="com.thortigen.orgabuy.data.models.CartItem" />
+
+        <variable
+            name="priceStart"
+            type="String" />
+
+        <variable
+            name="priceEnd"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".fragments.cart.dialog.SetItemPriceFragment">
 
-        <TextView
-            android:id="@+id/tv_price"
+        <LinearLayout
+            android:id="@+id/ll_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
-            android:gravity="center_horizontal"
-            android:text="Введите цену товара и количество"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_item_price"
-            style="@style/CustomTextInputLayout"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:focusedByDefault="false"
-            android:theme="@style/CustomTextInputLayout"
-            app:endIconMode="clear_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_price">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ti_et_item_price"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_item_price_rub"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Цена"
-                android:inputType="numberDecimal"
-                android:maxLength="8"
-                android:maxLines="1"
-                android:text="@{String.valueOf(currentItem.price)}" />
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="24dp"
+                android:focusedByDefault="true"
+                android:hint="Руб."
+                android:theme="@style/CustomTextInputLayout"
+                app:endIconMode="clear_text">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_et_item_price_rub"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:textSize="24sp"
+                    android:text="@{priceStart}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="."
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:textSize="48sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_item_price_kop"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="24dp"
+                android:focusedByDefault="false"
+                app:hintEnabled="true"
+                android:hint="Коп."
+                android:theme="@style/CustomTextInputLayout"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_et_item_price_kop"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:textSize="24sp"
+                    android:text="@{priceEnd}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_multiplier"
@@ -66,12 +102,12 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ti_item_price" />
+            app:layout_constraintTop_toBottomOf="@id/ll_price" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_item_quantity"
             style="@style/CustomTextInputLayout"
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="4dp"
@@ -84,7 +120,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ti_et_item_quantity"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Количество"
                 android:inputType="numberDecimal"
@@ -107,7 +143,7 @@
 
         <TextView
             android:id="@+id/tv_item_cost"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@{cartItemViewModel.itemCost}"
@@ -137,10 +173,8 @@
             android:gravity="end"
             android:text="Ok"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_item_cost"
-            app:layout_constraintTop_toTopOf="@id/tv_cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_cancel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

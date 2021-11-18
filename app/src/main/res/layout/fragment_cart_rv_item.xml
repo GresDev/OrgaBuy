@@ -7,6 +7,10 @@
         <variable
             name="cartItem"
             type="com.thortigen.orgabuy.data.models.CartItem" />
+
+        <variable
+            name="cartItemCost"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +20,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="6dp"
             android:layout_marginVertical="8dp"
             app:cardCornerRadius="@dimen/cornerRadius"
@@ -36,50 +40,27 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="10dp"
                     android:ellipsize="end"
                     android:gravity="start"
                     android:maxLines="3"
                     android:text="@{cartItem.name}"
                     android:textColor="@color/textMainColor"
-                    android:textSize="@dimen/text_size_on_lists"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ll_item_cost"
+                    android:textSize="@dimen/text_size_on_lists_item_name"
+                    app:layout_constraintEnd_toStartOf="@id/rv_ib_remove_from_cart"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:id="@+id/ll_item_cost"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:gravity="end"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/rv_ib_remove_from_cart"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/rv_tv_item_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(cartItem.price)}"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/rv_tv_item_quantity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(cartItem.quantity)}"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/rv_tv_item_cost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(cartItem.price*cartItem.quantity)}"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
+                    android:layout_marginVertical="4dp"
+                    android:paddingBottom="6dp"
+                    android:text="@{cartItemCost}"
+                    android:setTextColor="@{cartItem}"
+                    android:textSize="@dimen/text_size_on_lists_item_cost"
+                    app:layout_constraintStart_toStartOf="@id/rv_tv_item_name"
+                    app:layout_constraintTop_toBottomOf="@id/rv_tv_item_name" />
 
                 <ImageButton
                     android:id="@+id/rv_ib_remove_from_cart"

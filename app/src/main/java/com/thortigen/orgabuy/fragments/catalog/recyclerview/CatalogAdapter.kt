@@ -99,13 +99,13 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.ItemViewHolder>() {
             holder.addToShopListButton.visibility = View.INVISIBLE
             holder.removeFromShopListButton.visibility = View.VISIBLE
             holder.textView.setTextColor(
-                holder.itemView.getResources().getColorStateList(R.color.design_default_color_primary_variant)
+                holder.itemView.getResources().getColorStateList(R.color.textMainColor)
             )
         } else {
             holder.addToShopListButton.visibility = View.VISIBLE
             holder.removeFromShopListButton.visibility = View.INVISIBLE
             holder.textView.setTextColor(
-                holder.itemView.getResources().getColorStateList(R.color.design_default_color_primary)
+                holder.itemView.getResources().getColorStateList(R.color.textMainColor)
             )
         }
     }

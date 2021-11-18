@@ -1,14 +1,19 @@
 package com.thortigen.orgabuy.binding
 
+import android.content.res.Resources
 import android.view.View
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.data.models.CatalogItem
+import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.fragments.cart.CartFragmentDirections
 import com.thortigen.orgabuy.fragments.catalog.CatalogFragmentDirections
 
@@ -59,5 +64,14 @@ fun sendItemToPriceFragment(constraintLayout: ConstraintLayout, currentItem: Car
         val action =
             CartFragmentDirections.actionCartFragmentToSetItemPriceFragment(currentItem)
         constraintLayout.findNavController().navigate(action)
+    }
+}
+
+
+@BindingAdapter("android:setTextColor")
+fun setTextColor(view: TextView, currentItem: CartItem) {
+    when ((currentItem.quantity == 0.0) or (currentItem.price == 0.0)) {
+        true -> view.setTextColor(view.getResources().getColor(R.color.red))
+        false -> view.setTextColor(view.getResources().getColor(R.color.colorAccent))
     }
 }

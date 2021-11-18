@@ -95,8 +95,5 @@
         <argument
             android:name="currentItem"
             app:argType="com.thortigen.orgabuy.data.models.CartItem" />
-        <action
-            android:id="@+id/action_setItemPriceFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
     </dialog>
 </navigation>
