@@ -10,7 +10,8 @@ class CartItemPriceViewModel(application: Application) : AndroidViewModel(applic
 
     fun getItemCost(itemPrice: Double, itemQuantity: Double) {
 
-        itemCost.value = (itemPrice * itemQuantity).toString()
+        itemCost.value = String.format("%.2f", itemPrice * itemQuantity).replace(".", " руб. ") + " коп."
+
     }
 
 }

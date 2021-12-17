@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.databinding.FragmentCartBinding
 import com.thortigen.orgabuy.fragments.cart.recyclerview.CartAdapter
+import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.CartViewModel
 import com.thortigen.orgabuy.viewmodels.ShopListViewModel
 import kotlin.math.absoluteValue

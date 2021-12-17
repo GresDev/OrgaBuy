@@ -13,9 +13,21 @@
         <item name="hintTextColor">?attr/colorAccent</item>
     </style>
 
+    <style name="PriceTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorControlActivated">?attr/colorAccent</item>
+        <item name="boxCornerRadiusTopStart">@dimen/cornerRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/cornerRadius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/cornerRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/cornerRadius</item>
+        <item name="boxStrokeColor">?attr/colorAccent</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintTextColor">?attr/colorAccent</item>
+    </style>
+
     <style name="AlertDialogBox" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorOnPrimary">?attr/colorOnPrimary</item>
-        <item name="dialogCornerRadius">@dimen/cornerRadius</item>
+
     </style>
 
 </resources>

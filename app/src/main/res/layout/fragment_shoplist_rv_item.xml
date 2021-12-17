@@ -30,21 +30,38 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start|center_vertical">
 
-                <TextView
-                    android:id="@+id/rv_tv_item_name"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:maxLines="3"
-                    android:text="@{shopListItem.name}"
-                    android:textColor="@color/textMainColor"
-                    android:textSize="@dimen/text_size_on_lists_item_name"
+                    android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/rv_ib_add_to_cart"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <TextView
+                        android:id="@+id/rv_tv_item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{shopListItem.name}"
+                        android:textColor="@color/textMainColor"
+                        android:textSize="@dimen/text_size_on_lists_item_name" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@{shopListItem.description}"
+                        android:textColor="@color/textInactiveColor"
+                        android:textSize="@dimen/text_size_on_lists_item_description" />
+
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/rv_ib_add_to_cart"
@@ -61,13 +78,12 @@
                     android:id="@+id/rv_ib_is_in_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:backgroundTint="?attr/colorPrimary"
                     android:src="@drawable/ic_checkbox_checked_32"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/textInactiveColor" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

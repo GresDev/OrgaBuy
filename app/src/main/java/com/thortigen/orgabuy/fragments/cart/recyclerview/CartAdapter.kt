@@ -28,6 +28,24 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ItemViewHolder>() {
         fun bind(cartItem: CartItem) {
             binding.cartItem = cartItem
             binding.cartItemCost = String.format("%.2f", cartItem.price * cartItem.quantity)
+
+            if (cartItem.quantity - cartItem.quantity.toInt() == 0.0) {
+
+                binding.cartItemCostDetailed =
+                    " = " + String.format("%.2f", cartItem.price) + "x" + String.format(
+                        "%.0f",
+                        cartItem.quantity
+                    )
+            }
+            else {
+
+                binding.cartItemCostDetailed =
+                    " = " + String.format("%.2f", cartItem.price) + "x" + String.format(
+                        "%.3f",
+                        cartItem.quantity
+                    )
+            }
+
             binding.executePendingBindings()
         }
 

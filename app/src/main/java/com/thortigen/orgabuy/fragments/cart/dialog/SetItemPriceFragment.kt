@@ -3,20 +3,21 @@ package com.thortigen.orgabuy.fragments.cart.dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.databinding.FragmentCartItemPriceDialogBinding
+import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.CartItemPriceViewModel
 import com.thortigen.orgabuy.viewmodels.CartViewModel
 import java.lang.Exception
 import kotlin.math.roundToInt
 
-class SetItemPriceFragment : DialogFragment() {
+class SetItemPriceFragment : Fragment() {
 
     private var _binding: FragmentCartItemPriceDialogBinding? = null
     private val binding get() = _binding!!
@@ -26,6 +27,11 @@ class SetItemPriceFragment : DialogFragment() {
     private val mCartViewModel: CartViewModel by viewModels()
 
     private val itemPricingArgs by navArgs<SetItemPriceFragmentArgs>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,28 +50,15 @@ class SetItemPriceFragment : DialogFragment() {
             itemPricingArgs.currentItem.price.toString().substringAfter(".", "").padEnd(2, '0')
 
 
-//        var t1 = itemPricingArgs.currentItem.price.toString()
-//        var t2 = itemPricingArgs.currentItem.price.toString().takeWhile { x -> x != '.' }
-//        var t3 = itemPricingArgs.currentItem.price.toString().substringAfter(".", "").padEnd(2, '0')
-//
-//        if (t3.length < 2) {
-//            t3 += "0"
-//        }
-//
-//
-//        var t4 = t3
+        binding.quantityStart =
+            itemPricingArgs.currentItem.quantity.toString().takeWhile { x -> x != '.' }
+        binding.quantityEnd =
+            itemPricingArgs.currentItem.quantity.toString().substringAfter(".", "").padEnd(3, '0')
 
-        binding.tvCancel.setOnClickListener {
-            this.dismiss()
-        }
-
-        binding.tvOk.setOnClickListener {
-            setItemCost()
-        }
 
         binding.currentItem = itemPricingArgs.currentItem
 
-        binding.tiEtItemPriceRub.addTextChangedListener(object : TextWatcher {
+        binding.tiEtItemPriceStart.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
 
@@ -73,9 +66,10 @@ class SetItemPriceFragment : DialogFragment() {
 
                 try {
                     mCartItemPriceViewModel.getItemCost(
-                        s.toString()?.toDouble() + (binding.tiEtItemPriceKop.text.toString()
+                        s.toString()?.toDouble() + (binding.tiEtItemPriceEnd.text.toString()
                             ?.toDouble()) / 100.0,
-                        binding.tiEtItemQuantity.text.toString()?.toDouble()
+                        binding.tiEtItemQuantityStart.text.toString()
+                            ?.toDouble() + quantityEndNormalize(binding.tiEtItemQuantityEnd.text.toString()) / 1000.0
                     )
                 } catch (e: Exception) {
 
@@ -84,7 +78,7 @@ class SetItemPriceFragment : DialogFragment() {
         })
 
 
-        binding.tiEtItemPriceKop.addTextChangedListener(object : TextWatcher {
+        binding.tiEtItemPriceEnd.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
 
@@ -92,9 +86,11 @@ class SetItemPriceFragment : DialogFragment() {
 
                 try {
                     mCartItemPriceViewModel.getItemCost(
-                        (s.toString().toDouble()) / 100.0 + binding.tiEtItemPriceRub.text.toString()
+                        (s.toString()
+                            .toDouble()) / 100.0 + binding.tiEtItemPriceStart.text.toString()
                             ?.toDouble(),
-                        binding.tiEtItemQuantity.text.toString()?.toDouble()
+                        binding.tiEtItemQuantityStart.text.toString()
+                            ?.toDouble() + quantityEndNormalize(binding.tiEtItemQuantityEnd.text.toString()) / 1000.0
                     )
                 } catch (e: Exception) {
 
@@ -103,7 +99,7 @@ class SetItemPriceFragment : DialogFragment() {
         })
 
 
-        binding.tiEtItemQuantity.addTextChangedListener(object : TextWatcher {
+        binding.tiEtItemQuantityStart.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
 
@@ -111,30 +107,81 @@ class SetItemPriceFragment : DialogFragment() {
 
                 try {
                     mCartItemPriceViewModel.getItemCost(
-                        binding.tiEtItemPriceRub.text.toString()
-                            ?.toDouble() + binding.tiEtItemPriceKop.text.toString()
+                        binding.tiEtItemPriceStart.text.toString()
+                            ?.toDouble() + binding.tiEtItemPriceEnd.text.toString()
                             ?.toDouble() / 100.0,
-                        s.toString()?.toDouble()
+                        s.toString()
+                            ?.toDouble() + quantityEndNormalize(binding.tiEtItemQuantityEnd.text.toString()) / 1000.0
                     )
                 } catch (e: Exception) {
 
                 }
             }
         })
+
+        binding.tiEtItemQuantityEnd.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable?) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                try {
+                    mCartItemPriceViewModel.getItemCost(
+                        binding.tiEtItemPriceStart.text.toString()
+                            ?.toDouble() + binding.tiEtItemPriceEnd.text.toString()
+                            ?.toDouble() / 100.0,
+                        binding.tiEtItemQuantityStart.text.toString()
+                            ?.toDouble() + quantityEndNormalize(s.toString()) / 1000.0
+                    )
+                } catch (e: Exception) {
+
+                }
+            }
+        })
+
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
+    private fun quantityEndNormalize(quantityEnd: String): Double {
+        when (quantityEnd.length) {
+            1 -> return quantityEnd.toDouble() * 100.0
+            2 -> return quantityEnd.toDouble() * 10.0
+            3 -> return quantityEnd.toDouble()
+        }
+        return 0.0
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_item_enter_price_actionbar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_item_enter_price) {
+            setItemCost()
+            findNavController().navigate(R.id.action_setItemPriceFragment_to_cartFragment)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun setItemCost() {
-        var updatedCartItem = itemPricingArgs.currentItem
+        val updatedCartItem = itemPricingArgs.currentItem
 
 
-        updatedCartItem.price = binding.tiEtItemPriceRub.text.toString()
-            ?.toDouble() + binding.tiEtItemPriceKop.text.toString()?.toDouble() / 100.0
-        updatedCartItem.quantity = binding.tiEtItemQuantity.text.toString()?.toDouble()
+        updatedCartItem.price = binding.tiEtItemPriceStart.text.toString()
+            ?.toDouble() + binding.tiEtItemPriceEnd.text.toString()?.toDouble() / 100.0
+        updatedCartItem.quantity = binding.tiEtItemQuantityStart.text.toString()
+            ?.toDouble() + quantityEndNormalize(binding.tiEtItemQuantityEnd.text.toString()) / 1000.0
 
         mCartViewModel.editItem(updatedCartItem)
 
-        this.dismiss()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        view?.hideKeyboard()
     }
 
 }

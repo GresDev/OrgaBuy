@@ -31,30 +31,39 @@
                 android:layout_gravity="start|center_vertical"
                 android:sendItemToViewFragment="@{catalogItem}">
 
-                <TextView
-                    android:id="@+id/rv_tv_item_name"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:maxLines="3"
-                    android:text="@{catalogItem.name}"
-                    android:textColor="@color/textMainColor"
-                    android:textSize="@dimen/text_size_on_lists_item_name"
+                    android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/rv_btn_item_add_to_shop_list"
+                    app:layout_constraintEnd_toStartOf="@id/rv_btn_item_add_to_shop_list"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/rv_tv_item_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{catalogItem.description}"
-                    android:textSize="@dimen/text_size_on_lists_item_description"
-                    app:layout_constraintStart_toStartOf="@id/rv_tv_item_name"
-                    app:layout_constraintTop_toBottomOf="@id/rv_tv_item_name" />
+
+                    <TextView
+                        android:id="@+id/rv_tv_item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="1"
+                        android:text="@{catalogItem.name}"
+                        android:textColor="@color/textMainColor"
+                        android:textSize="@dimen/text_size_on_lists_item_name" />
+
+                    <TextView
+                        android:id="@+id/rv_tv_item_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@{catalogItem.description}"
+                        android:textSize="@dimen/text_size_on_lists_item_description" />
+
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/rv_btn_item_add_to_shop_list"

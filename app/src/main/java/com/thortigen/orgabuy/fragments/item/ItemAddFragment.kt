@@ -127,4 +127,9 @@ class ItemAddFragment : Fragment() {
         toast.show()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

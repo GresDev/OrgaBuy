@@ -88,12 +88,15 @@
             android:name="currentItem"
             app:argType="com.thortigen.orgabuy.data.models.CatalogItem" />
     </fragment>
-    <dialog
+    <fragment
         android:id="@+id/setItemPriceFragment"
         android:name="com.thortigen.orgabuy.fragments.cart.dialog.SetItemPriceFragment"
-        android:label="SetItemPriceFragment" >
+        android:label="Стоимость" >
         <argument
             android:name="currentItem"
             app:argType="com.thortigen.orgabuy.data.models.CartItem" />
-    </dialog>
+        <action
+            android:id="@+id/action_setItemPriceFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
 </navigation>
