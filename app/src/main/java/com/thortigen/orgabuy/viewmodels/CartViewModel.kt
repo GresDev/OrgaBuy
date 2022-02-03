@@ -16,12 +16,13 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     private val cartDao = AppDatabase.getDatabase(application).cartDao()
     private val cartRepository = CartRepository(cartDao)
 
-    val isCartEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
+    private var _isCartEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isCartEmpty: LiveData<Boolean> get()=_isCartEmpty
     val getAllItems: LiveData<List<CartItem>> = cartRepository.getAllItems
     val getTotalCartCost: LiveData<Double> = cartRepository.getTotalCartCost
 
     fun checkForCartIsEmpty(cartItemsList: List<CartItem>) {
-        isCartEmpty.value = cartItemsList.isEmpty()
+        _isCartEmpty.value = cartItemsList.isEmpty()
     }
 
     fun insertItem(cartItem: CartItem) {

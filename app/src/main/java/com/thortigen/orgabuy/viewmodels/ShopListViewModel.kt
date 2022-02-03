@@ -16,11 +16,12 @@ class ShopListViewModel(application: Application) : AndroidViewModel(application
     private val shopListDao = AppDatabase.getDatabase(application).shopListDao()
     private val shopListRepository = ShopListRepository(shopListDao)
 
-    val isShopListEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
+    private var _isShopListEmpty: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isShopListEmpty: LiveData<Boolean> get() = _isShopListEmpty
     val getAllItems: LiveData<List<ShopListItem>> = shopListRepository.getAllItems
 
     fun checkForShopListIsEmpty(shopListItemsList: List<ShopListItem>) {
-        isShopListEmpty.value = shopListItemsList.isEmpty()
+        _isShopListEmpty.value = shopListItemsList.isEmpty()
     }
 
     fun insertItem(shopListItem: ShopListItem) {

@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -35,7 +36,7 @@ fun catalogIsEmpty(view: View, itemListIsEmpty: MutableLiveData<Boolean>) {
 }
 
 @BindingAdapter("android:shopListIsEmpty")
-fun shopListIsEmpty(view: View, shopListIsEmpty: MutableLiveData<Boolean>) {
+fun shopListIsEmpty(view: View, shopListIsEmpty: LiveData<Boolean>) {
     when (shopListIsEmpty.value) {
         true -> view.visibility = View.VISIBLE
         false -> view.visibility = View.INVISIBLE
@@ -43,7 +44,7 @@ fun shopListIsEmpty(view: View, shopListIsEmpty: MutableLiveData<Boolean>) {
 }
 
 @BindingAdapter("android:cartListIsEmpty")
-fun cartListIsEmpty(view: View, cartIsEmpty: MutableLiveData<Boolean>) {
+fun cartListIsEmpty(view: View, cartIsEmpty: LiveData<Boolean>) {
     when (cartIsEmpty.value) {
         true -> view.visibility = View.VISIBLE
         false -> view.visibility = View.INVISIBLE
