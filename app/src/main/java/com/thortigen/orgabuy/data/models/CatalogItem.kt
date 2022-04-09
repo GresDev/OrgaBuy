@@ -6,7 +6,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "catalog_table", indices = [(Index(value=["name"], unique = true))])
+//@Entity(tableName = "catalog_table", indices = [(Index(value=["name"], unique = true))])
+@Entity(tableName = "catalog_table")
 @Parcelize
 data class CatalogItem(
     @PrimaryKey(autoGenerate = true)

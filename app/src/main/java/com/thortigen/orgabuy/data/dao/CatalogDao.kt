@@ -10,6 +10,9 @@ interface CatalogDao {
     @Query("SELECT * FROM catalog_table ORDER BY name ASC")
     fun getAllItems(): LiveData<List<CatalogItem>>
 
+    @Query("SELECT * FROM catalog_table ORDER BY name ASC")
+    fun getAllItemsList(): List<CatalogItem>
+
     @Query("SELECT * FROM catalog_table WHERE id LIKE :itemId")
     fun getItemById(itemId: Int): CatalogItem
 

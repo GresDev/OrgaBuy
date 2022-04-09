@@ -13,6 +13,7 @@ import com.thortigen.orgabuy.data.models.CartItem
 import com.thortigen.orgabuy.data.models.CatalogItem
 import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.databinding.FragmentItemEditBinding
+import com.thortigen.orgabuy.utils.ItemFullName
 import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.CartViewModel
 import com.thortigen.orgabuy.viewmodels.CatalogViewModel

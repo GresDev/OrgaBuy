@@ -8,6 +8,8 @@ class CatalogRepository(private val catalogDao: CatalogDao) {
 
     val getAllItems: LiveData<List<CatalogItem>> = catalogDao.getAllItems()
 
+   fun getAllItemsList() = catalogDao.getAllItemsList()
+
     fun insertItem(catalogItem: CatalogItem) {
         catalogDao.insertItem(catalogItem)
     }

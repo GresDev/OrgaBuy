@@ -12,6 +12,7 @@ import com.thortigen.orgabuy.R
 import com.thortigen.orgabuy.data.models.CatalogItem
 import com.thortigen.orgabuy.data.models.ShopListItem
 import com.thortigen.orgabuy.databinding.FragmentItemAddBinding
+import com.thortigen.orgabuy.utils.ItemFullName
 import com.thortigen.orgabuy.utils.hideKeyboard
 import com.thortigen.orgabuy.viewmodels.CatalogViewModel
 import com.thortigen.orgabuy.viewmodels.ItemAddViewModel
@@ -92,44 +93,50 @@ class ItemAddFragment : Fragment() {
 
     private fun addNewItem(newCatalogItem: CatalogItem, action: Int) {
 
-        if (mItemAddViewModel.getItemByName(newCatalogItem.name) == null) {
+        val itemFullName = ItemFullName(newCatalogItem.name, newCatalogItem.description)
+
+        val itemFullNameList = mItemAddViewModel.getFullNameItems()
+
+        if (itemFullName !in itemFullNameList) {
             mItemAddViewModel.insertItem(newCatalogItem)
 
-            val addedItem = mCatalogViewModel.getItemByName(newCatalogItem.name)
-
-            if (binding.swAutoAddNewItem.isChecked && addedItem != null) {
+            if (binding.swAutoAddNewItem.isChecked) {
 
                 mShopListViewModel.insertItem(
                     ShopListItem(
-                        addedItem.id,
-                        addedItem.name,
-                        addedItem.description,
+                        newCatalogItem.id,
+                        newCatalogItem.name,
+                        newCatalogItem.description,
                         0
                     )
                 )
 
             }
+
             showToast("Новая запись добавлена")
             findNavController().navigate(action)
 
-        } else {
+        }
+
+        else {
+
             showToast("Такая запись уже есть")
+
+        }
+    }
+
+        private fun inputIsCorrect(itemName: String) = itemName.isNotEmpty()
+
+        private fun showToast(message: String) {
+            val toast =
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+            toast.show()
+        }
+
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
         }
 
     }
-
-    private fun inputIsCorrect(itemName: String) = itemName.isNotEmpty()
-
-    private fun showToast(message: String) {
-        val toast =
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
-        toast.show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-}

@@ -16,7 +16,7 @@ interface ShopListDao {
     @Query("SELECT COUNT(*) FROM shoplist_table")
     fun getItemsNum(): LiveData<Int>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(shopListItem: ShopListItem)
 
     @Delete
